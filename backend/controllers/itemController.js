@@ -18,8 +18,9 @@ const insertItem = (itemInfo) => {
         .save()
         .then((itemData) => resolve(itemData))
         .catch((err) => reject(err));
+    } else {
+      reject(error.details[0].message);
     }
-    reject(error.details[0].message);
   });
 };
 

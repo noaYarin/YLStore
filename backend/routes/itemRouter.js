@@ -23,7 +23,10 @@ itemRoutes.get("/getAllItems", (req, res) => {
 });
 
 itemRoutes.post("/addItem", userAuth.verifyToken, (req, res) => {
-  insertItem(req.body, res.locals.decodedToken.isAdmin)
+  if (!res.locals.decodedToken.isAdmin) {
+    return res.status(403).json("Not a admin user");
+  }
+  insertItem(req.body)
     .then((item) => res.status(200).json(item))
     .catch((err) => {
       logger.error(`There is an error on ${req.baseUrl} url + ${err}`);
@@ -41,8 +44,11 @@ itemRoutes.get("/getItem/:id", (req, res) => {
 });
 
 itemRoutes.put("/updateItem/:id", userAuth.verifyToken, (req, res) => {
+  if (!res.locals.decodedToken.isAdmin) {
+    return res.status(403).json("Not a admin user");
+  }
   let { id } = req.params;
-  updateItem(id, res.locals.decodedToken, req.body)
+  updateItem(id, req.body)
     .then((item) => res.status(200).json(item))
     .catch((err) => {
       logger.error(`There is an error on ${req.baseUrl} url + ${err}`);
@@ -51,7 +57,10 @@ itemRoutes.put("/updateItem/:id", userAuth.verifyToken, (req, res) => {
 });
 
 itemRoutes.delete("/deleteItem/:id", userAuth.verifyToken, (req, res) => {
-  deleteItem(req.params.id, res.locals.decodedToken)
+  if (!res.locals.decodedToken.isAdmin) {
+    return res.status(403).json("Not a admin user");
+  }
+  deleteItem(req.params.id)
     .then((item) => res.status(200).json(item))
     .catch((err) => res.status(401).json(err));
 });

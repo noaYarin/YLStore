@@ -12,21 +12,18 @@ const generateToken = (user) => {
 
 const verifyToken = (req, res, next) => {
   const secretKey = process.env.SECRET_KEY;
-  if (req.headers.authorization.startWith("Bearer")) {
-    token = req.headers.authorization.split("")[1];
-    jwt
-      .verify(token, secretKey, { ignoreExpiration: true })
-      .then((userData) => {
-        res.locals.decodedToken = userData;
-        next();
-      })
-      .catch((error) => {
-        logger.info(`Token failed + ${error}`);
-        res.status(401);
-      });
-  } else {
+  if (!req.headers.authorization) {
     logger.error("Not authorized, access denied");
-    res.status(401);
+    return res.status(401);
+  }
+  try {
+    token = req.headers["authorization"].replace("Bearer ", "");
+    userData = jwt.verify(token, secretKey);
+    res.locals.decodedToken = userData;
+    return next();
+  } catch (err) {
+    logger.info(`Token failed + ${err}`);
+    return res.status(401);
   }
 };
 

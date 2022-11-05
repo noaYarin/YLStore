@@ -13,10 +13,10 @@ userRouter.post("/signUp", (req, res) => {
     });
 });
 
-userRouter.post("/signIn", userAuth.verifyToken, (req, res) => {
+userRouter.post("/signIn", (req, res) => {
   signIn(req.body)
     .then((token) => {
-      res.status(200).json(user);
+      res.status(200).json(token);
     })
     .catch((err) => {
       logger.error(`There is an error on ${req.baseUrl} url + ${err}`);
