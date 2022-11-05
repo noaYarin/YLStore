@@ -1,0 +1,15 @@
+.cart-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.buttonsContainer {
+  width: 120px;
+  display: flex;
+}
+.amount {
+  width: 50px;
+  text-align: center;
+}

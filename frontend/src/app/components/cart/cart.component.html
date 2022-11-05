@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<div class="wrapper">
+  <div class="account">
+    <div class="cart-heading">
+      <p class="empty">YOUR BASKET IS EMPTY</p>
+      <img
+        src="assets/images/shop.png"
+        alt="shopping-cart"
+        class="shopping-cart"
+      />
+    </div>
+    <div class="cart-heading">
+      <h1>Cart</h1>
+      <img
+        src="assets/images/shop.png"
+        alt="shopping-cart image"
+        class="shopping-cart"
+      />
+    </div>
+    <div>
+      <table>
+        <tr class="topics">
+          <td>Image</td>
+          <td>Title</td>
+          <td>Price</td>
+          <td>Qty</td>
+          <td>Remove</td>
+        </tr>
+        <tr></tr>
+      </table>
+    </div>
+    <div class="total-price">
+      <button class="continue-btn">Continue</button>
+      <div class="total">TOTAL : {{ totalPrice }}</div>
+    </div>
+  </div>
+</div>

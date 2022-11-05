@@ -1,0 +1,11 @@
+.books-store-heading {
+  color: cadetblue;
+}
+.badge {
+  position: absolute;
+  top: 30px;
+  right: 35px;
+}
+.user-icon {
+  margin-left: -80px;
+}
