@@ -1,37 +1,45 @@
 <app-navbar></app-navbar>
 <div class="wrapper">
-  <div class="account">
-    <div class="cart-heading">
-      <p class="empty">YOUR BASKET IS EMPTY</p>
-      <img
-        src="assets/images/shop.png"
-        alt="shopping-cart"
-        class="shopping-cart"
-      />
-    </div>
-    <div class="cart-heading">
-      <h1>Cart</h1>
-      <img
-        src="assets/images/shop.png"
-        alt="shopping-cart image"
-        class="shopping-cart"
-      />
-    </div>
-    <div>
-      <table>
-        <tr class="topics">
-          <td>Image</td>
-          <td>Title</td>
-          <td>Price</td>
-          <td>Qty</td>
-          <td>Remove</td>
-        </tr>
-        <tr></tr>
-      </table>
-    </div>
-    <div class="total-price">
+  <h1>Cart</h1>
+  <div class="cart-heading" *ngIf="!this.cartItems">
+    <p class="empty">YOUR BASKET IS EMPTY</p>
+    <button class="p-2">Click to start your shopping</button>
+  </div>
+
+  <!-- <div class="total-price">
       <button class="continue-btn">Continue</button>
       <div class="total">TOTAL : {{ totalPrice }}</div>
-    </div>
-  </div>
+    </div> -->
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef>Image</th>
+      <td mat-cell *matCellDef="let element">{{ element.image }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="size">
+      <th mat-header-cell *matHeaderCellDef>Size</th>
+      <td mat-cell *matCellDef="let element">{{ element.size }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="qty">
+      <th mat-header-cell *matHeaderCellDef>Qty</th>
+      <td mat-cell *matCellDef="let element">{{ element.qty }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
 </div>
+
+<app-footer></app-footer>

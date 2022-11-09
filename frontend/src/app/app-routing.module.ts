@@ -1,3 +1,4 @@
+import { CardComponent } from './components/crads-list/card/card.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'store', component: StoreComponent },
+  { path: 'cardInfo', component: CardComponent },
   { path: 'cart', component: CartComponent },
   { path: 'user', component: UserComponent },
   { path: '**', redirectTo: 'home', pathMatch: 'full' }

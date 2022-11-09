@@ -1,0 +1,23 @@
+.card {
+  width: 25vw;
+  height: 65vh;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.card .img {
+  height: 50vh;
+}
+/* .addToCartBtn {
+  padding: 7px;
+  border-radius: 6px;
+  background-color: #cdf0ea;
+} */
+
+/* FAF4B7 */
