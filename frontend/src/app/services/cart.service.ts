@@ -7,12 +7,21 @@ import { Item } from '../interfaces/item';
   providedIn: 'root'
 })
 export class CartService {
-  private configUrl = "http://localhost:3000"
+  private configUrl = "http://localhost:3000" ?? ''
   itemsList = []
   constructor(private http: HttpClient) { }
 
   getItems(): Observable<Item[]> {
     return this.http.get<Item[]>(this.configUrl + '/item/getAllItems')
+      .pipe(
+        catchError(err => {
+          throw new Error(err)
+        })
+      );
+  }
+
+  getItemById(id: string): Observable<Item> {
+    return this.http.get<Item>(this.configUrl + `/item/getItem/${id}`)
       .pipe(
         catchError(err => {
           throw new Error(err)

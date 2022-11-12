@@ -1,2 +1,12 @@
-<app-navbar></app-navbar> <app-cards-list></app-cards-list>
+<app-navbar></app-navbar>
+<app-cards-list [cardsList]="slicedList"></app-cards-list>
+<div class="load-wrap text-center">
+  <button
+    class="loadBtn"
+    [ngStyle]="{ display: hiddenBtn ? 'none' : '' }"
+    (click)="loadMoreItems()"
+  >
+    Load More
+  </button>
+</div>
 <app-footer></app-footer>

@@ -1,0 +1,8 @@
+.load-wrap {
+  height: 10vh;
+  background-color: #f9f9f9;
+}
+.load-wrap .loadBtn {
+  padding: 5px;
+  border-radius: 8%;
+}
