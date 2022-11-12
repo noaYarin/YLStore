@@ -1,4 +1,4 @@
 <div class="cards-list-container">
+  <mat-spinner *ngIf="spinner || !cardsList.length"></mat-spinner>
   <app-card *ngFor="let card of cardsList" [card]="card"></app-card>
 </div>
-<app-footer></app-footer>

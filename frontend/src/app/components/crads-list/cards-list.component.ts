@@ -9,12 +9,11 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CardsListComponent implements OnInit {
   @Input() cardsList: Item[] = []
+  spinner: boolean = false
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.cartService.getItems().subscribe((cards => {
-      this.cardsList = cards
-    }), err => console.log(err))
+
   }
 
 }

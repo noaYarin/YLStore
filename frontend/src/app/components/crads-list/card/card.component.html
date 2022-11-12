@@ -1,26 +1,51 @@
-<mat-card class="card">
-  <img
-    mat-card-image
-    src="{{ card?.image }}"
-    alt="{{ card?.title }}"
-    class="img"
-  />
-  <div class="card-bottom">
-    <mat-card-title>{{ card?.title | titlecase }}</mat-card-title>
-    <mat-card-footer>{{ card?.price | currency: "NIS" }}</mat-card-footer>
-  </div>
+<div class="card">
+  <a (click)="getCard(card?._id ?? '')">
+    <img
+      mat-card-image
+      src="{{ card?.image }}"
+      alt="{{ card?.title }}"
+      class="img"
+    />
+  </a>
 
-  <!-- <mat-card-actions class="d-flex justify-content-between m-2">
-    <button mat-button class="addToCartBtn m-2">
-      {{ "add to cart" | uppercase }}
-    </button>
-  </mat-card-actions> -->
-</mat-card>
+  <div class="p-2 m-2">
+    <p>{{ card?.title | titlecase }}</p>
+    <p>{{ card?.price | currency: "NIS" }}</p>
+  </div>
+</div>
+
+<div *ngIf="cardId" class="d-flex">
+  <div>
+    <img
+      mat-card-image
+      src="{{ card?.image }}"
+      alt="{{ card?.title }}"
+      class="img"
+    />
+  </div>
+  <div>
+    <p>{{ card?.title }}</p>
+    <p>{{ card?.type }}</p>
+    <p>
+      {{ card?.description }}
+    </p>
+  </div>
+  <p>{{ card?.type }}</p>
+  <select class="form-control">
+    <option></option>
+    <option>32</option>
+    <option>34</option>
+    <option>36</option>
+    <option>38</option>
+    <option>40</option>
+    <option>42</option>
+    <option>44</option>
+  </select>
+  <div>
+    <button>{{ "add to cart" | uppercase }}</button>
+  </div>
+</div>
 
 <!-- <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz
-      breeds of dog from Japan. A small, agile dog that copes very well with
-      mountainous terrain, the Shiba Inu was originally bred for hunting.
-    </p>
+   
   </mat-card-content> -->

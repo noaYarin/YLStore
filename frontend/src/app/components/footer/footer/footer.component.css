@@ -1,4 +1,8 @@
-footer {
+.footer {
+  height: 16vh;
   width: 100%;
   background-color: #ecc5fb;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }

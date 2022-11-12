@@ -1,19 +1,37 @@
 .card {
   width: 25vw;
-  height: 65vh;
   margin: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.card-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+.img:hover {
+  transition: 400ms ease-in-out;
+  opacity: 0.4;
 }
 .card .img {
-  height: 50vh;
+  height: 60vh;
+  width: 25vw;
 }
+
+@media only screen and (max-width: 900px) {
+  .card {
+    width: 35vw;
+  }
+  .card .img {
+    width: 35vw;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 60vw;
+  }
+  .card .img {
+    width: 60vw;
+  }
+}
+
 /* .addToCartBtn {
   padding: 7px;
   border-radius: 6px;
