@@ -14,6 +14,6 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  displayedColumns: string[] = ['image', 'name', 'size', 'qty', 'price'];
+  displayedColumns: string[] = ['image', 'name', 'size', 'qty', 'type', 'price'];
   dataSource = this.cartItems
 }
