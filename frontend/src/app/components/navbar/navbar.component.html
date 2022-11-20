@@ -1,55 +1,53 @@
-<nav class="navbar navbar-expand-lg navbar-light nav">
-  <div class="container-fluid">
-    <div
-      class="collapse navbar-collapse d-flex justify-content-between"
-      id="navbarCenteredExample"
-      mdbCollapse
+<mat-toolbar class="nav">
+  <mat-toolbar-row class="toolbarRow">
+    <button
+      (click)="sidenav.toggle()"
+      mat-icon-button
+      fxShow="true"
+      fxHide.gt-sm
     >
-      <div>
-        <img
-          src="../../../assets/images/Clothing store.png"
-          alt="Clothing store icon"
-          width="80px"
-        />
-      </div>
-      <ul class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a
-            routerLink="/home"
-            routerLinkActive="active"
-            class="nav-link"
-            aria-current="page"
-            >Home</a
-          >
-        </li>
-        <li class="nav-item">
-          <a routerLink="/about" routerLinkActive="active" class="nav-link"
-            >About</a
-          >
-        </li>
-        <li class="nav-item">
-          <a routerLink="/store" routerLinkActive="active" class="nav-link"
-            >Store</a
-          >
-        </li>
-      </ul>
-      <div class="d-flex justify-content-between">
-        <a
-          routerLink="/user"
-          routerLinkActive="active"
-          class="nav-link user-icon"
-        >
-          <img src="../../../assets/images/user-icon.png" alt="user icon" />
-        </a>
-        <a routerLink="/cart" routerLinkActive="active" class="nav-link">
-          <img
-            src="../../assets/images/shop.png"
-            alt="image of shopping-cart"
-            width="30px"
-          />
-          <span class="badge badge-pill bg-danger">{{ sum }}</span>
-        </a>
-      </div>
+      <i class="bi bi-list"></i>
+    </button>
+    <img
+      src="../../../assets/images/Clothing store.png"
+      alt="Clothing store logo"
+      width="80px"
+      class="logo"
+    />
+    <div fxShow="true" fxHide.lt-md class="hideResponsive">
+      <a
+        routerLink="/home"
+        routerLinkActive="active"
+        class="nav-link"
+        aria-current="page"
+        >Home</a
+      >
+      <a routerLink="/store" routerLinkActive="active" class="nav-link"
+        >Store</a
+      >
+      <a routerLink="/user" routerLinkActive="active" class="user-icon">
+        <i class="bi bi-person-fill icon"></i>
+      </a>
+      <a routerLink="/cart" routerLinkActive="active">
+        <i class="bi bi-bag icon"></i>
+      </a>
     </div>
-  </div>
-</nav>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav #sidenav class="nav">
+  <mat-nav-list>
+    <div class="icons-responsive">
+      <a routerLink="/home" routerLinkActive="active" aria-current="page"
+        >Home</a
+      >
+      <a routerLink="/store" routerLinkActive="active">Store</a>
+      <a routerLink="/cart" routerLinkActive="active">
+        <i class="bi bi-bag icon"></i>
+      </a>
+      <a routerLink="/user" routerLinkActive="active" class="user-icon">
+        <i class="bi bi-person-fill icon"></i>
+      </a>
+    </div>
+  </mat-nav-list>
+</mat-sidenav>

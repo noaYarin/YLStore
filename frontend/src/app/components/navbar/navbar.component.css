@@ -1,5 +1,9 @@
 .nav {
   background-color: #ecc5fb;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
 }
 .books-store-heading {
   color: cadetblue;
@@ -11,4 +15,36 @@
 }
 .user-icon {
   margin-left: -80px;
+}
+.icon {
+  color: black;
+  font-size: 20px;
+}
+.toolbarRow {
+  height: 16vh;
+  display: flex;
+}
+.toolbarRow .hideResponsive {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+}
+.logo {
+  margin-left: 10px;
+}
+.unresponsive {
+  display: flex;
+  justify-content: center;
+}
+.nav-link {
+  color: black;
+  border-bottom: 1px solid #000;
+}
+.icons-responsive {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+  align-items: center;
+  width: 80vw;
 }

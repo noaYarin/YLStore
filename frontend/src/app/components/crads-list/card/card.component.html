@@ -1,5 +1,5 @@
 <div class="card">
-  <a (click)="getCard(card?._id ?? '')">
+  <a routerLink="/cardInfo/{{ card?._id ?? '' }}">
     <img
       mat-card-image
       src="{{ card?.image }}"
@@ -13,39 +13,3 @@
     <p>{{ card?.price | currency: "NIS" }}</p>
   </div>
 </div>
-
-<div *ngIf="cardId" class="d-flex">
-  <div>
-    <img
-      mat-card-image
-      src="{{ card?.image }}"
-      alt="{{ card?.title }}"
-      class="img"
-    />
-  </div>
-  <div>
-    <p>{{ card?.title }}</p>
-    <p>{{ card?.type }}</p>
-    <p>
-      {{ card?.description }}
-    </p>
-  </div>
-  <p>{{ card?.type }}</p>
-  <select class="form-control">
-    <option></option>
-    <option>32</option>
-    <option>34</option>
-    <option>36</option>
-    <option>38</option>
-    <option>40</option>
-    <option>42</option>
-    <option>44</option>
-  </select>
-  <div>
-    <button>{{ "add to cart" | uppercase }}</button>
-  </div>
-</div>
-
-<!-- <mat-card-content>
-   
-  </mat-card-content> -->

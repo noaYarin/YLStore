@@ -1,0 +1,55 @@
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row;
+}
+
+.card .card-img {
+  width: 30vw;
+  height: 80vh;
+  margin: 20px;
+}
+.card-info {
+  width: 30vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  margin: 30px;
+}
+.goBackBtn {
+  width: 30px;
+  padding: 5px;
+  border-radius: 20px;
+  margin: 10px;
+}
+
+.addToCartBtn {
+  margin: 20px;
+  padding: 7px;
+  border-radius: 6px;
+  background-color: #cdf0ea;
+}
+
+@media only screen and (max-width: 900px) {
+  .card {
+    flex-wrap: wrap;
+    flex-basis: auto;
+    flex-flow: column;
+  }
+  .card .card-img {
+    height: 60vw;
+  }
+}
+
+/* @media only screen and (max-width: 600px) {
+  .card {
+    width: 60vw;
+  }
+  .card .img {
+    width: 60vw;
+  }
+} */
+
+/* FAF4B7 */
