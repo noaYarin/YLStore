@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card size">
   <a routerLink="/cardInfo/{{ card?._id ?? '' }}">
     <img
       mat-card-image
@@ -8,8 +8,8 @@
     />
   </a>
 
-  <div class="p-2 m-2">
+  <div class="p-2 m-2 size">
     <p>{{ card?.title | titlecase }}</p>
-    <p>{{ card?.price | currency: "NIS" }}</p>
+    <p>{{ card?.price | currency : "NIS" }}</p>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { CardInfoComponent } from './cardInfo/card-info/card-info.component';
+import { CardInfoComponent } from './components/cardInfo/card-info/card-info.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './components/cart/cart.component';

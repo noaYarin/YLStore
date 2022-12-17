@@ -1,5 +1,8 @@
 .home {
-  flex-grow: 1;
-  min-height: 100vh;
-  display: flex;
+  flex-flow: column;
+  flex: 1;
+  height: 60vh;
+}
+.store-title {
+  font-weight: bold;
 }

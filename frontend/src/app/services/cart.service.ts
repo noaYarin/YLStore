@@ -8,7 +8,7 @@ import { Item } from '../interfaces/item';
 })
 export class CartService {
   private configUrl = "http://localhost:3000" ?? ''
-  itemsList = []
+  itemsList: Item[] = []
   constructor(private http: HttpClient) { }
 
   getItems(): Observable<Item[]> {
@@ -27,5 +27,29 @@ export class CartService {
           throw new Error(err)
         })
       );
+  }
+
+  trashItem(item: any) {
+    let index = this.itemsList.findIndex((item) => item._id === item._id)
+    if (item.quantity === 1) {
+      return this.itemsList.splice(index, 1)
+    }
+    return item.quantity--
+  }
+
+  addItem(item: Item) {
+    let itemExist: any = this.findItem(item)
+    if (!itemExist) {
+      return this.itemsList.push(item)
+    }
+    return itemExist.quantity += item.quantity
+  }
+
+  cartItems(): Item[] {
+    return this.itemsList
+  }
+
+  findItem(item: Item) {
+    return this.itemsList.find(itemInCart => itemInCart._id === item._id)
   }
 }

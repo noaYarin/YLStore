@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Item } from 'src/app/interfaces/item';
+import { MatSort } from '@angular/material/sort';
+import { CartService } from 'src/app/services/cart.service';
+import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cart',
@@ -7,13 +13,57 @@ import { Item } from 'src/app/interfaces/item';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  totalPrice: any;
+  totalPrice: number = 0;
   cartItems: Item[] = []
+  dataSource: any
+  @ViewChild(MatSort)
+  sort: MatSort = new MatSort;
+  @ViewChild('empTbSortWithObject') empTbSortWithObject = new MatSort();
 
-  constructor() { }
+  constructor(
+    private cartService: CartService,
+    private router: Router,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.filterdCartItems()
   }
-  displayedColumns: string[] = ['image', 'name', 'size', 'qty', 'type', 'price'];
-  dataSource = this.cartItems
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
+
+  displayedColumns: string[] = ['image', 'name', 'size', 'qty', 'type', 'price', 'trash'];
+
+  goShopping() {
+    this.router.navigate(['store']);
+  }
+
+  filterdCartItems() {
+    this.getCartItems()
+    this.cartItems.map((item: any) => {
+      if (!item.quantity) {
+        item.quantity = 1
+      }
+      this.totalPrice += item.price * item.quantity
+    })
+    this.dataSource = new MatTableDataSource(this.cartItems);
+  }
+
+  trashItem(item: Item) {
+    this.cartService.trashItem(item)
+    this.getCartItems()
+    this.dataSource = new MatTableDataSource(this.cartItems);
+    this._snackBar.openFromComponent(SnackBarComponent, {
+      data: 'Item removed from cart',
+      duration: 3000,
+      verticalPosition: "top",
+      horizontalPosition: "center",
+      panelClass: ["red-snackbar"]
+    });
+  }
+
+  getCartItems() {
+    this.cartItems = this.cartService.cartItems()
+  }
 }

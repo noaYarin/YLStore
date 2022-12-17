@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Item } from 'src/app/interfaces/item';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -7,13 +7,9 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './cards-list.component.html',
   styleUrls: ['./cards-list.component.css']
 })
-export class CardsListComponent implements OnInit {
+export class CardsListComponent {
   @Input() cardsList: Item[] = []
-  spinner: boolean = false
+  term: string = ''
   constructor(private cartService: CartService) { }
-
-  ngOnInit(): void {
-
-  }
 
 }

@@ -9,8 +9,6 @@ import { CartComponent } from './components/cart/cart.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserComponent } from './components/user/user.component';
-import { ItemComponent } from './components/items-list/item/item.component';
-import { ItemsListComponent } from './components/items-list/items-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from './components/crads-list/card/card.component';
 import { CardsListComponent } from '../app/components/crads-list/cards-list.component'
@@ -23,7 +21,16 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { CardInfoComponent } from './cardInfo/card-info/card-info.component';
+import { CardInfoComponent } from './components/cardInfo/card-info/card-info.component';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import { SearchPipe } from './pipes/search.pipe';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
+import { MatSortModule } from '@angular/material/sort';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,12 +39,13 @@ import { CardInfoComponent } from './cardInfo/card-info/card-info.component';
     CartComponent,
     NavbarComponent,
     UserComponent,
-    ItemComponent,
-    ItemsListComponent,
     CardComponent,
     CardsListComponent,
     FooterComponent,
-    CardInfoComponent
+    CardInfoComponent,
+    SearchPipe,
+    SignInComponent,
+    SnackBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +59,14 @@ import { CardInfoComponent } from './cardInfo/card-info/card-info.component';
     MatSidenavModule,
     FlexLayoutModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatSnackBarModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

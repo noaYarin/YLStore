@@ -1,4 +1,12 @@
+<div class="filter">
+  <mat-form-field appearance="standard">
+    <mat-label class="size search-title">Search In Store</mat-label>
+    <input matInput [(ngModel)]="term" />
+  </mat-form-field>
+</div>
 <div class="cards-list-container">
-  <mat-spinner *ngIf="spinner || !cardsList.length"></mat-spinner>
-  <app-card *ngFor="let card of cardsList" [card]="card"></app-card>
+  <app-card
+    *ngFor="let card of cardsList | search : term"
+    [card]="card"
+  ></app-card>
 </div>

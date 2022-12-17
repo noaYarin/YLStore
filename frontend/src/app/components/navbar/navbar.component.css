@@ -1,9 +1,9 @@
 .nav {
-  background-color: #ecc5fb;
   display: flex;
   width: 100%;
   justify-content: space-around;
   align-items: center;
+  background-color: #e6e1e1;
 }
 .books-store-heading {
   color: cadetblue;
@@ -39,7 +39,6 @@
 }
 .nav-link {
   color: black;
-  border-bottom: 1px solid #000;
 }
 .icons-responsive {
   display: flex;
@@ -47,4 +46,10 @@
   margin: 20px;
   align-items: center;
   width: 80vw;
+}
+
+.nav-icons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }

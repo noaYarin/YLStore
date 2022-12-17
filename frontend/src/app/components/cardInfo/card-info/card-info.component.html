@@ -1,0 +1,32 @@
+<button type="button" class="goBackBtn" (click)="goBack()">
+  <i class="arrow bi bi-arrow-left"></i>
+</button>
+
+<div class="card flex-center size">
+  <img src="{{ card?.image }}" alt="{{ card?.title }}" class="card-img" />
+  <div class="card-info size">
+    <p>{{ card?.title | uppercase }}</p>
+    <p>
+      {{ card?.description }}
+    </p>
+    <p>{{ card?.price | currency : "NIS" }}</p>
+    <mat-form-field appearance="fill">
+      <mat-label class="size selection">Select Your Size</mat-label>
+      <mat-select (selectionChange)="onSelect($event)">
+        <mat-option *ngFor="let size of sizesArray" [value]="size">
+          {{ size }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div>
+      <button (click)="incrementQty()" class="plus">+</button>
+      <input type="text" [(ngModel)]="qty" class="amount" />
+      <button (click)="decrementQty()" class="minus">-</button>
+    </div>
+    <div>
+      <button (click)="addToCart()" class="size addToCartBtn">
+        {{ "add to cart" | uppercase }}
+      </button>
+    </div>
+  </div>
+</div>

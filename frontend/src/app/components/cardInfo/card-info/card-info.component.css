@@ -1,8 +1,6 @@
 .card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-flow: row;
+  border-style: none;
 }
 
 .card .card-img {
@@ -19,10 +17,14 @@
   margin: 30px;
 }
 .goBackBtn {
-  width: 30px;
+  width: 40px;
   padding: 5px;
   border-radius: 20px;
-  margin: 10px;
+  margin: 24px;
+}
+
+.arrow {
+  font-size: 25px;
 }
 
 .addToCartBtn {
@@ -32,6 +34,16 @@
   background-color: #cdf0ea;
 }
 
+.selection {
+  font-size: 14px;
+}
+
+.amount {
+  width: 2vw;
+  text-align: center;
+  padding: 2px;
+}
+
 @media only screen and (max-width: 900px) {
   .card {
     flex-wrap: wrap;
@@ -39,17 +51,7 @@
     flex-flow: column;
   }
   .card .card-img {
+    width: 60vw;
     height: 60vw;
   }
 }
-
-/* @media only screen and (max-width: 600px) {
-  .card {
-    width: 60vw;
-  }
-  .card .img {
-    width: 60vw;
-  }
-} */
-
-/* FAF4B7 */

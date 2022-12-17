@@ -1,12 +1,28 @@
 .wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-flow: column;
+  height: 60vh;
   flex-grow: 1;
-  min-height: 100vh;
+}
+
+.cart-heading {
+  flex-flow: column;
 }
 
 table {
-  width: 100%;
+  width: 70%;
+}
+
+.btns {
+  align-items: center;
+  height: 30vh;
+  justify-content: space-evenly;
+  width: 50vw;
+}
+.btn {
+  background-color: #ecc5fb;
+  border-radius: 5px;
+  border-color: black;
+}
+.trashIcon {
+  font-size: 20px;
 }
