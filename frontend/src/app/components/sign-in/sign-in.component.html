@@ -2,31 +2,6 @@
   <h1 class="size signIn">SIGN IN</h1>
   <form class="form" [formGroup]="userForm">
     <mat-form-field class="full-width" appearance="outline">
-      <mat-label>Username</mat-label>
-      <div class="flex">
-        <input
-          type="text"
-          matInput
-          formControlName="userNameFormControl"
-          [errorStateMatcher]="matcher"
-        />
-        <div class="icon bi bi-person"></div>
-      </div>
-      <mat-error
-        *ngIf="
-          userForm.controls['userNameFormControl'].hasError('username') &&
-          !userForm.controls['userNameFormControl'].hasError('required')
-        "
-      >
-        Please enter a valid username
-      </mat-error>
-      <mat-error
-        *ngIf="userForm.controls['userNameFormControl'].hasError('required')"
-      >
-        Username is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field class="full-width" appearance="outline">
       <mat-label>Email</mat-label>
       <div class="flex">
         <input
@@ -77,13 +52,6 @@
         Password is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-    <mat-checkbox
-      color="primary"
-      class="margin full-width"
-      [checked]="userForm.controls['isAdminFormControl'].value"
-      (change)="changeValue($event)"
-      >Admin</mat-checkbox
-    >
     <div class="btns flex-center">
       <button class="btn btn-dark" mat-button (click)="onResetForm()">
         RESET

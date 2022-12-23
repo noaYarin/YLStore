@@ -16,10 +16,7 @@
 .user-icon {
   margin-left: -80px;
 }
-.icon {
-  color: black;
-  font-size: 20px;
-}
+
 .toolbarRow {
   height: 16vh;
   display: flex;
@@ -50,6 +47,6 @@
 
 .nav-icons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 }

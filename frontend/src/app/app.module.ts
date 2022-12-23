@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomeComponent } from './components/home/home.component';
 import { StoreComponent } from './components/store/store.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -45,6 +46,7 @@ import { MatSortModule } from '@angular/material/sort';
     CardInfoComponent,
     SearchPipe,
     SignInComponent,
+    SignUpComponent,
     SnackBarComponent,
   ],
   imports: [
@@ -66,7 +68,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatCheckboxModule,
     MatSelectModule,
     MatSnackBarModule,
-    MatSortModule
+    MatSortModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -64,7 +64,7 @@
   </table>
 
   <div *ngIf="this.cartItems.length" class="btns flex-center">
-    <button class="btn">TOTAL : {{ totalPrice | currency : "NIS" }}</button>
+    <div class="btn">TOTAL : {{ totalPrice | currency : "NIS" }}</div>
     <button class="btn">CONTINUED</button>
   </div>
 </div>

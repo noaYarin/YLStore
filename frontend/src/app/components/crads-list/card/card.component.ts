@@ -13,5 +13,8 @@ export class CardComponent {
   showMoreBtn: string = 'show more'
   constructor() { }
 
+  saveItem() {
+
+  }
 
 }

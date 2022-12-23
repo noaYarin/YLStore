@@ -52,6 +52,7 @@ export class CartComponent implements OnInit {
 
   trashItem(item: Item) {
     this.cartService.trashItem(item)
+    this.totalPrice -= item.price ?? 0
     this.getCartItems()
     this.dataSource = new MatTableDataSource(this.cartItems);
     this._snackBar.openFromComponent(SnackBarComponent, {

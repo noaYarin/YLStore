@@ -22,9 +22,7 @@ export class SignInComponent {
 
   userForm = new FormGroup({
     emailFormControl: new FormControl('', [Validators.required, Validators.email]),
-    userNameFormControl: new FormControl('', [Validators.required, Validators.maxLength(15)]),
     passwordFormControl: new FormControl('', Validators.required),
-    isAdminFormControl: new FormControl(false),
   })
   matcher = new MyErrorStateMatcher();
 
@@ -34,10 +32,8 @@ export class SignInComponent {
 
   signIn() {
     let user: User = {}
-    user['userName'] = this.userForm.value.userNameFormControl
     user['email'] = this.userForm.value.emailFormControl
     user['password'] = this.userForm.value.passwordFormControl
-    user['isAdmin'] = this.userForm.value.isAdminFormControl
     console.log(user);
 
     // this.authService.signUp(user).subscribe(user => {

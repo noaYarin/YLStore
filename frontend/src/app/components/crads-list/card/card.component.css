@@ -31,3 +31,18 @@
     width: 60vw;
   }
 }
+
+.content {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+.save-icon {
+  cursor: pointer;
+  align-self: flex-end;
+}
+.save-icon:hover {
+  transform: scale(1.5);
+}
