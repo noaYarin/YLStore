@@ -1,1 +1,96 @@
-<p>sign-up works!</p>
+<div class="wrapper flex-center">
+  <h1 class="size signIn">SIGN UP</h1>
+  <form class="form" [formGroup]="signUpForm">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Username</mat-label>
+      <div class="flex">
+        <input
+          type="text"
+          matInput
+          formControlName="userNameFormControl"
+          [errorStateMatcher]="matcher"
+        />
+        <div class="icon bi bi-person"></div>
+      </div>
+      <mat-error
+        *ngIf="
+          signUpForm.controls['userNameFormControl'].hasError('username') &&
+          !signUpForm.controls['userNameFormControl'].hasError('required')
+        "
+      >
+        Please enter a valid username
+      </mat-error>
+      <mat-error
+        *ngIf="signUpForm.controls['userNameFormControl'].hasError('required')"
+      >
+        Username is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Email</mat-label>
+      <div class="flex">
+        <input
+          type="email"
+          matInput
+          formControlName="emailFormControl"
+          [errorStateMatcher]="matcher"
+          placeholder="Ex. pat@example.com"
+        />
+        <div class="icon bi bi-envelope-paper"></div>
+      </div>
+      <mat-error
+        *ngIf="
+          signUpForm.controls['emailFormControl'].hasError('email') &&
+          !signUpForm.controls['emailFormControl'].hasError('required')
+        "
+      >
+        Please enter a valid email address
+      </mat-error>
+      <mat-error
+        *ngIf="signUpForm.controls['emailFormControl'].hasError('required')"
+      >
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Password</mat-label>
+      <div class="flex">
+        <input
+          type="password"
+          matInput
+          formControlName="passwordFormControl"
+          [errorStateMatcher]="matcher"
+        />
+        <div class="icon bi bi-key-fill"></div>
+      </div>
+      <mat-error
+        *ngIf="
+          signUpForm.controls['passwordFormControl'].hasError('password') &&
+          !signUpForm.controls['passwordFormControl'].hasError('required')
+        "
+      >
+        Please enter a valid password
+      </mat-error>
+      <mat-error
+        *ngIf="signUpForm.controls['passwordFormControl'].hasError('required')"
+      >
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-checkbox
+      color="primary"
+      class="margin full-width"
+      [checked]="signUpForm.controls['isAdminFormControl'].value"
+      (change)="changeValue($event)"
+      >Admin</mat-checkbox
+    >
+    <div class="btns flex-center">
+      <button class="btn btn-dark" mat-button (click)="onResetForm()">
+        RESET
+      </button>
+      <button class="btn btn-warning" mat-button (click)="signUp()">
+        CREATE ACCOUNT
+      </button>
+    </div>
+  </form>
+</div>
