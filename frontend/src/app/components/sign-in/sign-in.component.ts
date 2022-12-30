@@ -3,6 +3,9 @@ import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '
 import { ErrorStateMatcher } from '@angular/material/core';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -18,11 +21,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class SignInComponent {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private _snackBar: MatSnackBar, private router: Router) { }
 
   userForm = new FormGroup({
     emailFormControl: new FormControl('', [Validators.required, Validators.email]),
-    passwordFormControl: new FormControl('', Validators.required),
+    passwordFormControl: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9 ]{9}')]),
   })
   matcher = new MyErrorStateMatcher();
 
@@ -34,15 +37,36 @@ export class SignInComponent {
     let user: User = {}
     user['email'] = this.userForm.value.emailFormControl
     user['password'] = this.userForm.value.passwordFormControl
-    console.log(user);
 
-    // this.authService.signUp(user).subscribe(user => {
-    //   console.log(user);
-    // })
+    this.authService.signIn((user)).subscribe((token: any) => {
+      console.log(token);
+
+      localStorage.setItem('userToken', token);
+      this._snackBar.openFromComponent(SnackBarComponent, {
+        data: `Hello`,
+        duration: 3000,
+        verticalPosition: "top",
+        horizontalPosition: "center",
+        panelClass: ["green-snackbar"]
+      });
+
+    }, err => {
+      this._snackBar.openFromComponent(SnackBarComponent, {
+        data: `${err}`,
+        duration: 3000,
+        verticalPosition: "top",
+        horizontalPosition: "center",
+        panelClass: ["red-snackbar"]
+      });
+    })
   }
 
   onResetForm() {
     this.userForm.reset()
+  }
+
+  createAccount() {
+    this.router.navigate(['signUp']);
   }
 
 }

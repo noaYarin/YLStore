@@ -65,7 +65,7 @@
 
   <div *ngIf="this.cartItems.length" class="btns flex-center">
     <div class="btn">TOTAL : {{ totalPrice | currency : "NIS" }}</div>
-    <button class="btn">CONTINUED</button>
+    <button class="btn" (click)="continueBtn()">CONTINUED</button>
   </div>
 </div>
 

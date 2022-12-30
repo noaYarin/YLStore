@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="wrapper flex-center">
   <h1 class="size signIn">SIGN UP</h1>
   <form class="form" [formGroup]="signUpForm">
@@ -14,7 +15,7 @@
       </div>
       <mat-error
         *ngIf="
-          signUpForm.controls['userNameFormControl'].hasError('username') &&
+          signUpForm.controls['userNameFormControl'].hasError('minlength') &&
           !signUpForm.controls['userNameFormControl'].hasError('required')
         "
       >
@@ -58,6 +59,7 @@
         <input
           type="password"
           matInput
+          pattern="[a-zA-Z0-9 ]{9}"
           formControlName="passwordFormControl"
           [errorStateMatcher]="matcher"
         />
@@ -65,7 +67,7 @@
       </div>
       <mat-error
         *ngIf="
-          signUpForm.controls['passwordFormControl'].hasError('password') &&
+          signUpForm.controls['passwordFormControl'].hasError('pattern') &&
           !signUpForm.controls['passwordFormControl'].hasError('required')
         "
       >
@@ -80,7 +82,6 @@
     <mat-checkbox
       color="primary"
       class="margin full-width"
-      [checked]="signUpForm.controls['isAdminFormControl'].value"
       (change)="changeValue($event)"
       >Admin</mat-checkbox
     >
@@ -88,9 +89,15 @@
       <button class="btn btn-dark" mat-button (click)="onResetForm()">
         RESET
       </button>
-      <button class="btn btn-warning" mat-button (click)="signUp()">
+      <button
+        class="btn btn-warning"
+        mat-button
+        (click)="signUp()"
+        [disabled]="signUpForm.invalid"
+      >
         CREATE ACCOUNT
       </button>
     </div>
   </form>
 </div>
+<app-footer></app-footer>

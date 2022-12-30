@@ -14,7 +14,14 @@ export class AuthService {
   signIn(user: User): Observable<User> {
     return this.http.post<User>(this.configUrl + '/user/signIn', user).pipe(
       catchError(err => {
-        throw new Error(err)
+        throw new Error(err.error)
+      })
+    );
+  }
+  signUp(user: User): Observable<User> {
+    return this.http.post<User>(this.configUrl + '/user/signUp', user).pipe(
+      catchError(err => {
+        throw new Error(err.error)
       })
     );
   }

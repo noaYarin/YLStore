@@ -5,6 +5,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { HomeComponent } from './components/home/home.component';
 import { StoreComponent } from './components/store/store.component';
 import { UserComponent } from './components/user/user.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'cardInfo/:id', component: CardInfoComponent },
   { path: 'cart', component: CartComponent },
   { path: 'user', component: UserComponent },
+  { path: 'signUp', component: SignUpComponent },
+  { path: 'signIn', component: SignInComponent },
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 

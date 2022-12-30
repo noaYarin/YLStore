@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="wrapper flex-center">
   <h1 class="size signIn">SIGN IN</h1>
   <form class="form" [formGroup]="userForm">
@@ -32,6 +33,7 @@
       <div class="flex">
         <input
           type="password"
+          pattern="[a-zA-Z0-9 ]{9}"
           matInput
           formControlName="passwordFormControl"
           [errorStateMatcher]="matcher"
@@ -40,7 +42,7 @@
       </div>
       <mat-error
         *ngIf="
-          userForm.controls['passwordFormControl'].hasError('password') &&
+          userForm.controls['passwordFormControl'].hasError('pattern') &&
           !userForm.controls['passwordFormControl'].hasError('required')
         "
       >
@@ -56,10 +58,13 @@
       <button class="btn btn-dark" mat-button (click)="onResetForm()">
         RESET
       </button>
-      <button class="btn btn-warning" mat-button>CREATE ACCOUNT</button>
+      <button class="btn btn-warning" mat-button (click)="createAccount()">
+        CREATE ACCOUNT
+      </button>
       <button class="btn btn-warning" mat-button (click)="signIn()">
         SIGN IN
       </button>
     </div>
   </form>
 </div>
+<app-footer></app-footer>

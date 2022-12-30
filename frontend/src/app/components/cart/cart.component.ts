@@ -67,4 +67,10 @@ export class CartComponent implements OnInit {
   getCartItems() {
     this.cartItems = this.cartService.cartItems()
   }
+
+  continueBtn() {
+    if (!localStorage.getItem('userToken')) {
+      this.router.navigate(['signIn']);
+    }
+  }
 }

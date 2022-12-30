@@ -3,6 +3,9 @@ import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '
 import { ErrorStateMatcher } from '@angular/material/core';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -18,18 +21,18 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class SignUpComponent {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private _snackBar: MatSnackBar, private router: Router) { }
 
   signUpForm = new FormGroup({
     emailFormControl: new FormControl('', [Validators.required, Validators.email]),
-    userNameFormControl: new FormControl('', [Validators.required, Validators.maxLength(15)]),
-    passwordFormControl: new FormControl('', Validators.required),
+    userNameFormControl: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    passwordFormControl: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9 ]{9}')]),
     isAdminFormControl: new FormControl(false),
   })
   matcher = new MyErrorStateMatcher();
 
-  changeValue(checked: any) {
-    this.signUpForm.controls['isAdminFormControl'] = checked
+  changeValue(event: any) {
+    this.signUpForm.patchValue({ isAdminFormControl: event.checked })
   }
 
   signUp() {
@@ -38,11 +41,25 @@ export class SignUpComponent {
     user['email'] = this.signUpForm.value.emailFormControl
     user['password'] = this.signUpForm.value.passwordFormControl
     user['isAdmin'] = this.signUpForm.value.isAdminFormControl
-    console.log(user);
 
-    // this.authService.signUp(user).subscribe(user => {
-    //   console.log(user);
-    // })
+    this.authService.signUp(user).subscribe(user => {
+      this._snackBar.openFromComponent(SnackBarComponent, {
+        data: `Hello ${user.userName}`,
+        duration: 3000,
+        verticalPosition: "top",
+        horizontalPosition: "center",
+        panelClass: ["green-snackbar"]
+      });
+      this.router.navigate(['cart']);
+    }, err => {
+      this._snackBar.openFromComponent(SnackBarComponent, {
+        data: `${err}`,
+        duration: 3000,
+        verticalPosition: "top",
+        horizontalPosition: "center",
+        panelClass: ["red-snackbar"]
+      });
+    })
   }
 
   onResetForm() {
