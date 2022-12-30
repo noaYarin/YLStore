@@ -9,7 +9,7 @@ userRouter.post("/signUp", (req, res) => {
     .then((user) => res.status(200).json(user))
     .catch((err) => {
       logger.error(`There is an error on ${req.baseUrl} url + ${err}`);
-      res.status(400).json(err);
+      res.status(400).send(err);
     });
 });
 
@@ -20,7 +20,7 @@ userRouter.post("/signIn", (req, res) => {
     })
     .catch((err) => {
       logger.error(`There is an error on ${req.baseUrl} url + ${err}`);
-      res.status(400).json(err);
+      res.status(400).send(err);
     });
 });
 
