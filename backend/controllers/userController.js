@@ -33,7 +33,10 @@ const signIn = (user) => {
           if (err) reject(err);
           if (!results) reject("Wrong password");
           else {
-            resolve(generateToken(recordedUser));
+            resolve({
+              user: recordedUser,
+              token: generateToken(recordedUser),
+            });
           }
         });
       })

@@ -15,8 +15,8 @@ userRouter.post("/signUp", (req, res) => {
 
 userRouter.post("/signIn", (req, res) => {
   signIn(req.body)
-    .then((token) => {
-      res.status(200).json(token);
+    .then((userObject) => {
+      res.status(200).send({ user: userObject.user, token: userObject.token });
     })
     .catch((err) => {
       logger.error(`There is an error on ${req.baseUrl} url + ${err}`);
