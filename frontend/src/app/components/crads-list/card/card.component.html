@@ -9,10 +9,6 @@
   </a>
 
   <div class="content p-2 m-2 size flex">
-    <div class="save-icon" (click)="saveItem()">
-      <i class="bi bi-bookmark-heart icon"></i>
-    </div>
-
     <p>{{ card?.title | titlecase }}</p>
     <p>{{ card?.price | currency : "NIS" }}</p>
   </div>

@@ -1,7 +1,7 @@
 .home {
   flex-flow: column;
   flex: 1;
-  height: 60vh;
+  height: 70vh;
 }
 .store-title {
   font-weight: bold;

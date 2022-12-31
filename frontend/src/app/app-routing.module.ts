@@ -7,6 +7,7 @@ import { StoreComponent } from './components/store/store.component';
 import { UserComponent } from './components/user/user.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { PaypalComponent } from './components/paypal/paypal.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'user', component: UserComponent },
   { path: 'signUp', component: SignUpComponent },
   { path: 'signIn', component: SignInComponent },
+  { path: 'paypal', component: PaypalComponent },
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 

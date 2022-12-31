@@ -2,6 +2,7 @@
   flex-flow: column;
   height: 60vh;
   flex-grow: 1;
+  height: 70vh;
 }
 
 .cart-heading {

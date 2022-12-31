@@ -9,6 +9,7 @@ import { Item } from '../interfaces/item';
 export class CartService {
   private configUrl = "http://localhost:3000" ?? ''
   itemsList: Item[] = []
+  savedItemsList: Item[] = []
   constructor(private http: HttpClient) { }
 
   getItems(): Observable<Item[]> {
@@ -51,5 +52,9 @@ export class CartService {
 
   findItem(item: Item) {
     return this.itemsList.find(itemInCart => itemInCart._id === item._id)
+  }
+
+  addSavedItem(item: Item) {
+    this.savedItemsList.push(item)
   }
 }

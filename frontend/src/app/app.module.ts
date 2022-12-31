@@ -32,6 +32,8 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { MatSortModule } from '@angular/material/sort';
+import { PaypalComponent } from './components/paypal/paypal.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +50,7 @@ import { MatSortModule } from '@angular/material/sort';
     SignInComponent,
     SignUpComponent,
     SnackBarComponent,
+    PaypalComponent,
   ],
   imports: [
     BrowserModule,

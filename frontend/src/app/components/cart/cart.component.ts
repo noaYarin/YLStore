@@ -23,7 +23,8 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private router: Router,
-    private _snackBar: MatSnackBar) { }
+    private _snackBar: MatSnackBar) {
+  }
 
   ngOnInit(): void {
     this.filterdCartItems()
@@ -70,7 +71,8 @@ export class CartComponent implements OnInit {
 
   continueBtn() {
     if (!localStorage.getItem('userToken')) {
-      this.router.navigate(['signIn']);
+      return this.router.navigate(['signIn']);
     }
+    return this.router.navigate(['paypal'])
   }
 }

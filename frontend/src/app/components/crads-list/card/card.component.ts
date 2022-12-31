@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Item } from 'src/app/interfaces/item';
 
 @Component({
@@ -11,10 +11,4 @@ export class CardComponent {
   cardId?: Item
   addToCartBtn: string = 'add to cart'
   showMoreBtn: string = 'show more'
-  constructor() { }
-
-  saveItem() {
-
-  }
-
 }

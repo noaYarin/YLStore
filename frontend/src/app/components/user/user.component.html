@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened position="end" class="right-content">
+    <div class="user-icon">
+      <i class="icon bi bi-person-circle"></i>
+      <span>Hello {{ user?.userName }}</span>
+      <button
+        *ngIf="hideBtn"
+        class="signInBtn"
+        class="logOutBtn"
+        (click)="signIn()"
+      >
+        Sign In
+      </button>
+    </div>
+    <ng-container *ngIf="!hideBtn">
+      <nav class="nav">
+        <li><a class="link" href="#">Orders</a></li>
+      </nav>
+      <button class="logOutBtn" (click)="logOut()">Log Out</button>
+    </ng-container>
+  </mat-sidenav>
+  <mat-sidenav-content> </mat-sidenav-content>
+</mat-sidenav-container>
+<app-footer></app-footer>

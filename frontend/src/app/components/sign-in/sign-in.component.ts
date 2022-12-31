@@ -38,17 +38,17 @@ export class SignInComponent {
     user['email'] = this.userForm.value.emailFormControl
     user['password'] = this.userForm.value.passwordFormControl
 
-    this.authService.signIn((user)).subscribe((token: any) => {
-      console.log(token);
-
-      localStorage.setItem('userToken', token);
+    this.authService.signIn((user)).subscribe((user: any) => {
+      this.authService.user = user.user
+      localStorage.setItem('userToken', user.token);
       this._snackBar.openFromComponent(SnackBarComponent, {
-        data: `Hello`,
+        data: `Hello ${user.user.userName}`,
         duration: 3000,
         verticalPosition: "top",
         horizontalPosition: "center",
         panelClass: ["green-snackbar"]
       });
+      this.router.navigate(['cart']);
 
     }, err => {
       this._snackBar.openFromComponent(SnackBarComponent, {

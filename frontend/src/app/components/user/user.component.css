@@ -1,0 +1,38 @@
+.example-container {
+  height: 70%;
+  width: 100%;
+}
+.right-content {
+  width: 15vw;
+  display: flex;
+  background-color: #ecc5fb;
+  padding: 10px;
+}
+.nav {
+  display: flex;
+  justify-content: flex-end;
+}
+.user-icon {
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+.icon {
+  font-size: 30px;
+}
+.link {
+  width: 100%;
+  color: black;
+  padding: 3px;
+}
+
+.logOutBtn {
+  position: absolute;
+  bottom: 30px;
+
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  border-color: black;
+}
