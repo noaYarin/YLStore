@@ -4,13 +4,13 @@ const mongoose = require("mongoose"),
 
 const itemSchema = new Schema(
   {
-    image: { type: String },
-    title: { type: String },
-    description: { type: String },
-    type: { type: String },
-    size: { type: Number },
-    price: { type: Number },
-    quantity: { type: Number },
+    image: { type: String, default: "" },
+    title: { type: String, default: "" },
+    description: { type: String, default: "" },
+    type: { type: String, default: "" },
+    size: { type: Number, default: 0 },
+    price: { type: Number, default: 0 },
+    quantity: { type: Number, default: 0 },
   },
   { timestamps: true }
 );
@@ -19,7 +19,6 @@ itemSchema.methods.validateItem = (item) => {
     _id: Joi.options({ allowUnknown: true }),
     image: Joi.string().min(10),
     title: Joi.string().min(2).max(30),
-    type: Joi.string().min(3).max(30),
     description: Joi.string().min(5).max(150),
     price: Joi.number().integer().min(1),
     createdAt: Joi.options({ allowUnknown: true }),
