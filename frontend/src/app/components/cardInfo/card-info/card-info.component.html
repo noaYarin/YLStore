@@ -28,5 +28,11 @@
         {{ "add to cart" | uppercase }}
       </button>
     </div>
+    <div class="card-actions" *ngIf="userIsAuthenticated && user?.isAdmin">
+      <button class="mat-fab extended">Update</button>
+      <button class="m-2 mat-fab extended" (click)="deleteCard(card?._id)">
+        Delete
+      </button>
+    </div>
   </div>
 </div>

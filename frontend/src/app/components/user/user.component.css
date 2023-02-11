@@ -11,6 +11,7 @@
 .nav {
   display: flex;
   justify-content: flex-end;
+  flex-flow: column;
 }
 .user-icon {
   padding: 2px;
@@ -26,12 +27,12 @@
   width: 100%;
   color: black;
   padding: 3px;
+  text-decoration: none;
 }
 
 .logOutBtn {
   position: absolute;
   bottom: 30px;
-
   background-color: #f9f9f9;
   border-radius: 5px;
   border-color: black;

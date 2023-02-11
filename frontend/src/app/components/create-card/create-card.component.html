@@ -1,0 +1,62 @@
+<app-navbar></app-navbar>
+<div class="wrapper flex-center size">
+  <h1 class="size">Add New Item</h1>
+
+  <form [formGroup]="createCard" (ngSubmit)="onSubmit(createCard)">
+    <div class="fields size">
+      <!-- Upload image -->
+      <div class="upload">
+        <div class="preview">
+          <img
+            width="100%"
+            *ngIf="imageUrl"
+            [src]="imageUrl"
+            class="image"
+            id="imageUpload"
+          />
+        </div>
+        <input
+          class="file"
+          type="file"
+          id="imageUpload"
+          accept=".png, .jpg, .jpeg"
+          #fileInput
+          (change)="uploadFile($event)"
+        />
+      </div>
+
+      <mat-form-field class="full-width" appearance="legacy">
+        <mat-label class="size">Title </mat-label>
+        <input type="text" matInput formControlName="title" />
+        <mat-error *ngIf="createCard.get('title')">
+          Please enter title
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="legacy">
+        <mat-label class="size">Price </mat-label>
+        <input type="number" matInput formControlName="price" />
+        <mat-error *ngIf="createCard.get('price')">
+          Please enter price
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="legacy">
+        <mat-label class="size">Description </mat-label>
+        <textarea
+          cols="3"
+          rows="3"
+          type="text"
+          matInput
+          formControlName="description"
+        ></textarea>
+        <mat-error *ngIf="createCard.get('description')">
+          Please enter description
+        </mat-error>
+      </mat-form-field>
+
+      <button class="btn btn-warning size" mat-button>Create</button>
+    </div>
+  </form>
+</div>
+<app-footer></app-footer>

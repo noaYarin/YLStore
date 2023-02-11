@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  flex-flow: column;
+  margin: 20px;
+}
+
+.fields {
+  width: 35vw;
+  display: flex;
+  flex-flow: column;
+  margin: 10px 10px;
+}
+
+.upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+.file {
+  width: 200px;
+  margin: 30px;
+}
+.btn {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}

@@ -44,6 +44,10 @@
   padding: 2px;
 }
 
+.card-actions {
+  margin: 20px;
+}
+
 @media only screen and (max-width: 900px) {
   .card {
     flex-wrap: wrap;

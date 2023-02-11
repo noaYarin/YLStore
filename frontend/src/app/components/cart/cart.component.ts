@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Item } from 'src/app/interfaces/item';
 import { MatSort } from '@angular/material/sort';
@@ -23,7 +24,8 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private router: Router,
-    private _snackBar: MatSnackBar) {
+    private _snackBar: MatSnackBar,
+    private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -70,8 +72,8 @@ export class CartComponent implements OnInit {
   }
 
   continueBtn() {
-    if (!localStorage.getItem('userToken')) {
-      return this.router.navigate(['signIn']);
+    if (!this.authService.getLoggedUser()) {
+      return this.router.navigate(['signIn'])
     }
     return this.router.navigate(['paypal'])
   }

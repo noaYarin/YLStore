@@ -1,3 +1,5 @@
+import { AuthGuard } from './auth/auth.guard';
+import { CreateCardComponent } from './components/create-card/create-card.component';
 import { CardInfoComponent } from './components/cardInfo/card-info/card-info.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -8,12 +10,14 @@ import { UserComponent } from './components/user/user.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { PaypalComponent } from './components/paypal/paypal.component';
+import { IsAdminGuard } from './auth/is-admin.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'store', component: StoreComponent },
   { path: 'cardInfo/:id', component: CardInfoComponent },
+  { path: 'createCard', component: CreateCardComponent, canActivate: [AuthGuard, IsAdminGuard] },
   { path: 'cart', component: CartComponent },
   { path: 'user', component: UserComponent },
   { path: 'signUp', component: SignUpComponent },
@@ -25,6 +29,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard, IsAdminGuard]
 })
 export class AppRoutingModule { }

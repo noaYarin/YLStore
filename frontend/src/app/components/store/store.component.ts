@@ -1,3 +1,4 @@
+import { CardService } from './../../services/card.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Item } from 'src/app/interfaces/item';
 import { CartService } from 'src/app/services/cart.service';
@@ -12,15 +13,18 @@ export class StoreComponent implements OnInit {
   slicedList: Item[] = []
   spinner: boolean = false
   hiddenBtn: boolean = false
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private cardService: CardService) {
+  }
 
   ngOnInit(): void {
     this.spinner = true
     this.cartService.getItems().subscribe((cards => {
       this.list = cards
+      let cardId = this.cardService.deletedCardId
+      this.list = this.list.filter(card => card._id !== cardId)
       this.slicedList = this.list.slice(0, 6)
       this.spinner = false
-    }), () => this.spinner = true)
+    }), () => this.spinner = false)
   }
 
   loadMoreItems() {
@@ -31,7 +35,6 @@ export class StoreComponent implements OnInit {
       this.hiddenBtn = true
     }
     this.slicedList = this.list.slice(0, numOfItems)
-
   }
 
 }

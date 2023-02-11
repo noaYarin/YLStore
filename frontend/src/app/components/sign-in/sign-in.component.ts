@@ -38,11 +38,9 @@ export class SignInComponent {
     user['email'] = this.userForm.value.emailFormControl
     user['password'] = this.userForm.value.passwordFormControl
 
-    this.authService.signIn((user)).subscribe((user: any) => {
-      this.authService.user = user.user
-      localStorage.setItem('userToken', user.token);
+    this.authService.signIn((user)).subscribe(() => {
       this._snackBar.openFromComponent(SnackBarComponent, {
-        data: `Hello ${user.user.userName}`,
+        data: `Hello ${this.authService.user?.userName}`,
         duration: 3000,
         verticalPosition: "top",
         horizontalPosition: "center",

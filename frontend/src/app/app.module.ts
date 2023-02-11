@@ -10,7 +10,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserComponent } from './components/user/user.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CardComponent } from './components/crads-list/card/card.component';
 import { CardsListComponent } from '../app/components/crads-list/cards-list.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -33,6 +33,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import { MatSortModule } from '@angular/material/sort';
 import { PaypalComponent } from './components/paypal/paypal.component';
+import { AuthInterceptor } from './auth/auth-interceptor';
+import { CreateCardComponent } from './components/create-card/create-card.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { PaypalComponent } from './components/paypal/paypal.component';
     SignUpComponent,
     SnackBarComponent,
     PaypalComponent,
+    CreateCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +77,7 @@ import { PaypalComponent } from './components/paypal/paypal.component';
     MatSortModule,
     MatInputModule,
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
