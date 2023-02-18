@@ -61,7 +61,7 @@ itemRoutes.delete("/deleteItem/:id", userAuth.verifyToken, (req, res) => {
     return res.status(403).json("Not a admin user");
   }
   deleteItem(req.params.id)
-    .then((item) => res.status(200).send(item))
+    .then(() => res.status(200).send())
     .catch((err) => res.status(401).send(err));
 });
 

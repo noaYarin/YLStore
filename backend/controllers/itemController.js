@@ -57,7 +57,7 @@ const updateItem = (_id, itemData) => {
 const deleteItem = (itemId) => {
   return new Promise((resolve, reject) => {
     Item.findOneAndDelete({ _id: itemId })
-      .then((item) => resolve(item))
+      .then(() => resolve())
       .catch((err) => reject(err));
   });
 };

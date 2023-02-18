@@ -23,6 +23,9 @@ itemSchema.methods.validateItem = (item) => {
     price: Joi.number().integer().min(1),
     createdAt: Joi.options({ allowUnknown: true }),
     updatedAt: Joi.options({ allowUnknown: true }),
+    size: Joi.options({ allowUnknown: true }),
+    type: Joi.options({ allowUnknown: true }),
+    quantity: Joi.options({ allowUnknown: true }),
     __v: Joi.options({ allowUnknown: true }),
   });
   return joiItemSchema.validate(item);
