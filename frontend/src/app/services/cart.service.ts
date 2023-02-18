@@ -16,7 +16,7 @@ export class CartService {
     return this.http.get<Item[]>(this.configUrl + '/item/getAllItems')
       .pipe(
         catchError(err => {
-          throw new Error(err)
+          throw new Error(err.message)
         })
       );
   }
@@ -25,7 +25,7 @@ export class CartService {
     return this.http.get<Item>(this.configUrl + `/item/getItem/${id}`)
       .pipe(
         catchError(err => {
-          throw new Error(err)
+          throw new Error(err.message)
         })
       );
   }
