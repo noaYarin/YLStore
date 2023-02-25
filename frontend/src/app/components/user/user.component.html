@@ -3,7 +3,13 @@
   <mat-sidenav mode="side" opened position="end" class="right-content">
     <div class="user-icon">
       <i class="icon bi bi-person-circle"></i>
-      <span>{{ user?.userName?.toUpperCase() }}</span>
+      <span
+        >{{
+          user?.isAdmin
+            ? "Admin - " + user?.userName?.toUpperCase()
+            : user?.userName?.toUpperCase()
+        }}
+      </span>
       <button
         *ngIf="!userIsAuthenticated"
         class="signInBtn"
@@ -22,6 +28,7 @@
       <button class="logOutBtn" (click)="logOut()">Log Out</button>
     </ng-container>
   </mat-sidenav>
+  <router-outlet></router-outlet>
   <mat-sidenav-content> </mat-sidenav-content>
 </mat-sidenav-container>
 <app-footer></app-footer>
