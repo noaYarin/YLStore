@@ -45,6 +45,10 @@
 }
 
 .card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   margin: 20px;
 }
 
@@ -57,5 +61,8 @@
   .card .card-img {
     width: 60vw;
     height: 60vw;
+  }
+  .amount {
+    width: 5vw;
   }
 }
