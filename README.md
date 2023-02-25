@@ -126,9 +126,11 @@ Start the client
 
 ## Screenshots
 
-<img src= >
-<img src= >
-<img src= >
+<img width=800 src=https://user-images.githubusercontent.com/89860312/221374293-c7ec9784-baa2-4b58-939d-7f3c2eb6ae31.png >
+
+<img width=800 src=https://user-images.githubusercontent.com/89860312/221374295-f7f135dd-1768-4421-a431-1cb65f2dd2d7.png >
+
+<img width=800 src=https://user-images.githubusercontent.com/89860312/221374278-fc0c75f5-14ce-4a61-8778-8012aab50f26.png >
 
 ## Developer
 
