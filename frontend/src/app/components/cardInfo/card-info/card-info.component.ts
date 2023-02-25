@@ -80,13 +80,20 @@ export class CardInfoComponent implements OnInit {
     this.location.back();
   }
 
-  deleteCard(cardId?: string) {
-    if (!this.userIsAuthenticated || this.user?.isAdmin) {
+  updateItem(cardId?: string) {
+    if (!this.userIsAuthenticated || !this.user?.isAdmin) {
       return
     }
+    this.router.navigate(['/updateCard', cardId])
+  }
+
+  deleteItem(cardId?: string) {
+    if (!this.userIsAuthenticated || !this.user?.isAdmin) {
+      return
+    }
+
     this.cardService.deleteCard(cardId).subscribe(() => {
-      this.cardService.deletedCardId
-      this.openSnackBar('Card Deleted', 'green-snackbar')
+      this.openSnackBar('Item Deleted', 'green-snackbar')
       this.router.navigate(['store'])
     }, err => {
       this.openSnackBar(err, 'red-snackbar')

@@ -29,8 +29,10 @@
       </button>
     </div>
     <div class="card-actions" *ngIf="userIsAuthenticated && user?.isAdmin">
-      <button class="mat-fab extended">Update</button>
-      <button class="m-2 mat-fab extended" (click)="deleteCard(card?._id)">
+      <button class="mat-fab extended" (click)="updateItem(card?._id)">
+        Update
+      </button>
+      <button class="mat-fab m-2 extended" (click)="deleteItem(card?._id)">
         Delete
       </button>
     </div>

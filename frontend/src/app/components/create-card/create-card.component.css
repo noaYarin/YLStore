@@ -16,12 +16,40 @@
   justify-content: center;
   align-items: center;
   flex-flow: column;
+  height: 50%;
+  margin: 1rem 0;
 }
-.file {
-  width: 200px;
-  margin: 30px;
+.upload img {
+  height: 100%;
+  margin-bottom: 20px;
 }
+
 .btn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.pickBtn {
   margin-top: 30px;
-  margin-bottom: 30px;
+}
+
+.close-icon {
+  font-size: 48px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.close-icon:hover {
+  transition: 1 all;
+  transform: scale(0.8);
+}
+
+.preview-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10%;
+}
+
+input[type="file"] {
+  visibility: hidden;
 }

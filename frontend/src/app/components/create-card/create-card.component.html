@@ -1,21 +1,24 @@
 <app-navbar></app-navbar>
 <div class="wrapper flex-center size">
-  <h1 class="size">Add New Item</h1>
+  <h1 class="size mt-2">{{ !isEditMode ? "Add New Item" : "Update Item" }}</h1>
 
-  <form [formGroup]="createCard" (ngSubmit)="onSubmit(createCard)">
-    <div class="fields size">
-      <!-- Upload image -->
+  <form [formGroup]="card" (ngSubmit)="onSubmit(card)">
+    <!-- Create -->
+    <div class="fields size" *ngIf="!isEditMode">
       <div class="upload">
-        <div class="preview">
+        <div class="preview" *ngIf="imageUrl !== ''">
           <img
-            width="100%"
-            *ngIf="imageUrl"
+            [alt]="card.value.title"
             [src]="imageUrl"
-            class="image"
+            class="preview-image"
             id="imageUpload"
           />
         </div>
+        <button mat-stroked-button type="button" (click)="filePicker.click()">
+          Pick Image
+        </button>
         <input
+          #filePicker
           class="file"
           type="file"
           id="imageUpload"
@@ -23,21 +26,33 @@
           #fileInput
           (change)="uploadFile($event)"
         />
+        <mat-error *ngIf="image?.errors?.['required'] && isUploadedImage">
+          Upload image
+        </mat-error>
       </div>
 
       <mat-form-field class="full-width" appearance="legacy">
         <mat-label class="size">Title </mat-label>
-        <input type="text" matInput formControlName="title" />
-        <mat-error *ngIf="createCard.get('title')">
-          Please enter title
+        <input
+          type="text"
+          matInput
+          formControlName="title"
+          minlength="3"
+          maxlength="30"
+        />
+        <mat-error *ngIf="title?.errors?.['required']">
+          Please enter Title
+        </mat-error>
+        <mat-error *ngIf="title?.errors?.['minlength']">
+          Title field need to be 3 letters at least.
         </mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width" appearance="legacy">
         <mat-label class="size">Price </mat-label>
         <input type="number" matInput formControlName="price" />
-        <mat-error *ngIf="createCard.get('price')">
-          Please enter price
+        <mat-error *ngIf="price?.errors?.['required']">
+          Please enter Price
         </mat-error>
       </mat-form-field>
 
@@ -48,14 +63,113 @@
           rows="3"
           type="text"
           matInput
+          minlength="5"
           formControlName="description"
         ></textarea>
-        <mat-error *ngIf="createCard.get('description')">
+        <mat-error *ngIf="description?.errors?.['required']">
           Please enter description
+        </mat-error>
+        <mat-error *ngIf="description?.errors?.['minlength']">
+          Description field need to be 5 letters at least.
         </mat-error>
       </mat-form-field>
 
-      <button class="btn btn-warning size" mat-button>Create</button>
+      <button [disabled]="card.invalid" class="btn btn-warning size" mat-button>
+        Create
+      </button>
+    </div>
+
+    <!-- Edit -->
+    <div *ngIf="isEditMode">
+      <div class="fields size">
+        <div class="upload">
+          <div class="preview" *ngIf="imageUrl !== '' && imageUrl">
+            <img
+              class="preview-image"
+              [alt]="card.value.title"
+              [src]="imageUrl"
+              id="imageUpload"
+            />
+          </div>
+          <button
+            class="pickBtn"
+            mat-stroked-button
+            type="button"
+            (click)="filePicker.click()"
+          >
+            Pick Image
+          </button>
+          <input
+            #filePicker
+            class="file"
+            type="file"
+            id="imageUpload"
+            accept=".png, .jpg, .jpeg"
+            (change)="uploadFile($event)"
+          />
+          <mat-error *ngIf="item!.image && isUploadedImage">
+            Upload image
+          </mat-error>
+        </div>
+
+        <mat-form-field class="full-width" appearance="legacy">
+          <mat-label class="size">Title </mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="title"
+            minlength="3"
+            maxlength="30"
+            [(ngModel)]="item!.title"
+          />
+          <mat-error *ngIf="title?.errors?.['required']">
+            Please enter Title
+          </mat-error>
+          <mat-error *ngIf="title?.errors?.['minlength']">
+            Title field need to be 3 letters at least.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="legacy">
+          <mat-label class="size">Price </mat-label>
+          <input
+            type="number"
+            matInput
+            formControlName="price"
+            [ngModel]="item?.price"
+          />
+          <mat-error *ngIf="price?.errors?.['required']">
+            Please enter Price
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="legacy">
+          <mat-label class="size">Description </mat-label>
+          <textarea
+            cols="3"
+            rows="3"
+            type="text"
+            matInput
+            minlength="5"
+            formControlName="description"
+            [(ngModel)]="item!.description"
+          ></textarea>
+          <mat-error *ngIf="description?.errors?.['required']">
+            Please enter description
+          </mat-error>
+          <mat-error *ngIf="description?.errors?.['minlength']">
+            Description field need to be 5 letters at least.
+          </mat-error>
+        </mat-form-field>
+
+        <button
+          [disabled]="card.invalid"
+          class="btn btn-warning size"
+          mat-button
+        >
+          Save
+        </button>
+      </div>
     </div>
   </form>
 </div>

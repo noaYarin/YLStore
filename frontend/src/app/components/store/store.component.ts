@@ -20,8 +20,6 @@ export class StoreComponent implements OnInit {
     this.spinner = true
     this.cartService.getItems().subscribe((cards => {
       this.list = cards
-      let cardId = this.cardService.deletedCardId
-      this.list = this.list.filter(card => card._id !== cardId)
       this.slicedList = this.list.slice(0, 6)
       this.spinner = false
     }), () => this.spinner = false)
