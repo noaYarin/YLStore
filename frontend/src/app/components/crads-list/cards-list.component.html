@@ -9,4 +9,7 @@
     *ngFor="let card of cardsList | search : term"
     [card]="card"
   ></app-card>
+  <p class="size noResults" *ngIf="(cardsList | search : term)?.length <= 0">
+    No Results, try another filter
+  </p>
 </div>
