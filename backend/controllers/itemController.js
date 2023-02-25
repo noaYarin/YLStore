@@ -43,14 +43,12 @@ const updateItem = (_id, itemData) => {
         .then(() => {
           Item.findByIdAndUpdate({ _id }, { $set: itemData })
             .then((item) => {
-              resolve(item);
+              return resolve(item);
             })
             .catch((err) => reject(err));
         })
         .catch((err) => reject(err));
     }
-    let err = error.details[0].message;
-    reject(err);
   });
 };
 
